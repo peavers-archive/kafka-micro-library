@@ -11,8 +11,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group 'kafka.library.micro'
@@ -23,23 +21,15 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     maven { url "https://repo.spring.io/milestone" }
-    maven { url 'https://jitpack.io' }
-}
-
-ext {
-    springCloudVersion = 'Finchley.RC1'
 }
 
 dependencies {
     compile('org.springframework.cloud:spring-cloud-stream')
     compile('org.springframework.cloud:spring-cloud-stream-binder-kafka')
-    compile('org.springframework.kafka:spring-kafka')
-
-    compileOnly('org.projectlombok:lombok:1.18.0')
 }
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom 'org.springframework.cloud:spring-cloud-stream-dependencies:Elmhurst.RELEASE'
     }
 }
